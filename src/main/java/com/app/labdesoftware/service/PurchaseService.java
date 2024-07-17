@@ -61,12 +61,14 @@ public class PurchaseService {
     }
 
     public Purchase create(PurchaseRequest purchaseRequest, CartRepository cartRepository) {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER SALVAR/CRIAR UMA NOVA COMPRA
         User user = userRepository.findById(purchaseRequest.getUserId()).orElseThrow(()-> new RuntimeException("USER NOT FOUND"));
         Purchase purchase = Purchase.from(purchaseRequest, cartRepository);
         return purchaseRepository.save(purchase);
     }
 
     public void update(int id, PurchaseRequest purchaseRequest) throws BadRequestException {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER ATUALIZAR UMA COMPRA
         Optional<Purchase> purchase = purchaseRepository.findById(id);
         if(!purchase.isPresent()){
             throw new BadRequestException("PURCHASE IS NOT FOUND");
@@ -78,6 +80,7 @@ public class PurchaseService {
     }
 
     public void delete(int id) {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER DELETAR UMA COMPRA
         Optional<Purchase> purchase = purchaseRepository.findById(id);
         if(purchase.isPresent()){
             purchase.get().setStatusPurchase(StatusPurchase.CANCELED);

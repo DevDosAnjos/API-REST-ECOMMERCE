@@ -38,7 +38,7 @@ public class ProductController {
 
 
     @GetMapping("/brand/{brand}")
-    public ResponseEntity<List<ProductResponse>> listProdutsByBrand(@PathVariable("brand")String brand){
+    public ResponseEntity<List<ProductResponse>> listProductsByBrand(@PathVariable("brand")String brand){
         List<ProductResponse> products = productService.listProductsByBrand(brand);
         return ResponseEntity.ok(products);
     }

@@ -41,11 +41,13 @@ public class CartService {
     }
 
     public Cart create(CartRequest cartRequest) {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER SALVAR/CRIAR UM NOVO CARRINHO
         Cart cart = Cart.from(cartRequest,orderRepository);
         return cartRepository.save(cart);
     }
 
     public void update(int id, CartRequest cartRequest) throws BadRequestException {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER ATUALIZAR UM CARRINHO
         Optional<Cart> cart = cartRepository.findById(id);
         if (!cart.isPresent()) {
             throw new BadRequestException("CART IS NOT FOUND");
@@ -54,6 +56,7 @@ public class CartService {
     }
 
     public void delete(int id) {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER DELETAR UM CARRINHO
         Optional<Cart> cart = cartRepository.findById(id);
         if (cart.isPresent()) {
             cart.get().setStatusCart(StatusCart.CANCELED);

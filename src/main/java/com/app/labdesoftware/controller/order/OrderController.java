@@ -36,16 +36,16 @@ public class OrderController {
     return ResponseEntity.ok(order);
     }
 
-    @PutMapping("/")
+    @PutMapping("/{id}")
     public ResponseEntity updateOrder(@PathVariable("id") int id, @RequestBody OrderRequest orderRequest) throws BadRequestException {
         orderService.update(id,orderRequest);
         return ResponseEntity.ok().build();
     }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity deleteOrder(@PathVariable("id") int id ){
-//        orderService.delete(id);
-//        return ResponseEntity.ok().build();
-//    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteOrder(@PathVariable("id") int id ){
+        orderService.delete(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

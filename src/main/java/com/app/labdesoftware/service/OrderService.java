@@ -38,11 +38,14 @@ public class OrderService {
     }
 
     public Order create(OrderRequest orderRequest) {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER SALVAR/CRIAR UM NOVO PEDIDO
+
         Order order = Order.from(orderRequest,productRepository);
         return orderRepository.save(order);
     }
 
     public void update(int id, OrderRequest orderRequest) throws BadRequestException {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER ATUALIZAR UM PEDIDO
         Optional<Order> order = orderRepository.findById(id);
         if (!order.isPresent()){
             throw new BadRequestException("ORDER IS NOT FOUND");
@@ -50,11 +53,14 @@ public class OrderService {
         orderRepository.saveAndFlush(order.get());
     }
 
-//    public void delete(int id) {
-//        Optional<Order> order = orderRepository.findById(id);
-//        if (order.isPresent()){
-//            order.get().
-//        }
-//    }
+
+    //TODO: MELHORAR O QUE ESSA FUNÇÃO FAZ
+    public void delete(int id) {
+        //TODO:ADICIONAR A AUTENTICAÇÃO DO USUARIO PARA PODER DELETAR UM PEDIDO
+        Optional<Order> order = orderRepository.findById(id);
+        if (order.isPresent()){
+            order.get().setId(id);
+        }
+    }
 
 }
