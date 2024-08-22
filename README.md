@@ -1,4 +1,4 @@
-<h1 style="text-align: center"> 🏪E-COMMERCE API🏪 </h1>
+<h1 align="center"> 🏪E-COMMERCE API🏪 </h1>
 
 
 ## 🛒Projeto
