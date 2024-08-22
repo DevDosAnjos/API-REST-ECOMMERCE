@@ -1,11 +1,11 @@
 package com.app.labdesoftware.entities;
 
-import com.app.labdesoftware.enumeration.UserRole;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.app.labdesoftware.enumerations.UserRole;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,18 +14,18 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity(name = "users")
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(of = "id")
+@Data
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
     private UserRole role;
+
+    public User() {
+    }
 
     public User(String username, String password,UserRole role) {
         this.username = username;

@@ -1,7 +1,7 @@
 package com.app.labdesoftware.entities;
 
-import com.app.labdesoftware.controller.category.CategoryRequest;
-import com.app.labdesoftware.enumeration.StatusCategory;
+import com.app.labdesoftware.controllers.category.CategoryRequest;
+import com.app.labdesoftware.enumerations.StatusCategory;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,7 +25,6 @@ public class Category {
         this.name = name;
         this.status = StatusCategory.ACTIVE;
     }
-
 
     public static Category from(CategoryRequest categoryRequest) {
         return new Category(

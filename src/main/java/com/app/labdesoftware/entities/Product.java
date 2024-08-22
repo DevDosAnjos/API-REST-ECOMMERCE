@@ -1,7 +1,7 @@
 package com.app.labdesoftware.entities;
 
-import com.app.labdesoftware.controller.product.ProductRequest;
-import com.app.labdesoftware.enumeration.Stock;
+import com.app.labdesoftware.controllers.product.ProductRequest;
+import com.app.labdesoftware.enumerations.StatusStock;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,7 +18,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
-    private Stock stock;
+    private StatusStock statusStock;
 
     public Product() {
     }
@@ -28,7 +28,7 @@ public class Product {
         this.brand = brand;
         this.price = price;
         this.category = category;
-        this.stock = Stock.IN_STOCK;
+        this.statusStock = StatusStock.IN_STOCK;
     }
 
     public static Product from(ProductRequest productRequest, Category category){
@@ -37,7 +37,6 @@ public class Product {
                 productRequest.brand(),
                 productRequest.price(),
                 category
-
         );
     }
 }
