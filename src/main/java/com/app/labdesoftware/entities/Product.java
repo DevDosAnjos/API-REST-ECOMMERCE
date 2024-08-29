@@ -18,6 +18,7 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+    @Enumerated(EnumType.STRING)
     private StatusStock statusStock;
 
     public Product() {

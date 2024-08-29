@@ -1,11 +1,13 @@
 package com.app.labdesoftware.controllers.category;
 
+import com.app.labdesoftware.entities.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,14 +25,14 @@ public interface Category {
 
     })
     @GetMapping("/{id}")
-    ResponseEntity<CategoryResponse> get(@PathVariable("id") Integer id);
+    ResponseEntity<CategoryResponse> get(@AuthenticationPrincipal User user, @PathVariable("id") Integer id);
 
     @Operation(summary = "Get a List of All Categories", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",description = "Ok"),
     })
     @GetMapping("/all")
-    ResponseEntity<List<CategoryResponse>> listAll();
+    ResponseEntity<List<CategoryResponse>> listAll(@AuthenticationPrincipal User user);
 
     @Operation(summary = "Get a List of Categories Actives", method = "GET")
     @ApiResponses(value = {

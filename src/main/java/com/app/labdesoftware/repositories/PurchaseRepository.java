@@ -11,6 +11,6 @@ import java.util.Optional;
 @Repository
 public interface PurchaseRepository extends JpaRepository<Purchase, Integer>{
     Optional<Purchase> findById(Integer id);
-    Optional<Purchase> findByUser(User user);
+    Optional<Purchase> findByIdAndUser(Integer id,User user);
     List<Purchase> findAllByUser(User user);
 }

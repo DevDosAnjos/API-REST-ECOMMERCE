@@ -1,0 +1,606 @@
+{
+	"info": {
+		"_postman_id": "e0b377e9-c771-4fef-88d0-2fce6b98674f",
+		"name": "Ecommerce",
+		"description": "PT-BR: Coleção contendo todos os endpoint da minha API REST.\n\nEN: Collection containing all endpoints of my REST API.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "33937307"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Admin Register",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"DEFAULT_ADMIN\",\r\n    \"password\":\"DEFAULT_ADMIN\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/auth/admin/register"
+							},
+							"response": []
+						}
+					],
+					"description": "PT-BR: Somente usuarios ADMIN tem acesso a esses endpoints.\n\nEN: Only ADMIN users have access to these endpoints."
+				},
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"DEFAULT\",\r\n    \"password\":\"DEFAULT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/auth/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\":\"DEFAULT\",\r\n    \"password\":\"DEFAULT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/auth/register"
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "PT-BR: Endpoints de Autenticação.\n\nEN: Authentication Endpoints."
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "User All",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/user/all"
+							},
+							"response": []
+						},
+						{
+							"name": "User All Admins",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/user/admins"
+							},
+							"response": []
+						},
+						{
+							"name": "User All Users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/user/users"
+							},
+							"response": []
+						}
+					],
+					"description": "PT-BR: Somente usuarios ADMIN tem acesso a esses endpoints.\n\nEN: Only ADMIN users have access to these endpoints."
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "User",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"username\": \"DEFAULT\",\r\n    \"password\": \"DEFAULT\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/user"
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "PT-BR: Endpoints dos Usuarios.\n\nEN: User Endpoints."
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Category Inactive",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/category/inactive"
+							},
+							"response": []
+						},
+						{
+							"name": "Category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"DEFAULT\",\r\n    \"statusCategory\": \"ACTIVE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/category"
+							},
+							"response": []
+						},
+						{
+							"name": "Category {id}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"DEFAULT\",\r\n    \"statusCategory\": \"INACTIVE/ACTIVE\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/category/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Category {id}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8080/category/1"
+							},
+							"response": []
+						}
+					],
+					"description": "PT-BR: Somente usuarios ADMIN tem acesso a esses endpoints.\n\nEN: Only ADMIN users have access to these endpoints."
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "Category {id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/category/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Category All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/category/all"
+							},
+							"response": []
+						},
+						{
+							"name": "Category Active",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/category/active"
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "PT-BR: Endpoints das Categorias.\n\nEN: Category Endpoints."
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Product outOfStock",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/product/outOfStock"
+							},
+							"response": []
+						},
+						{
+							"name": "Product",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"DEFAULT\",\r\n  \"brand\": \"DEFAULT\",\r\n  \"price\": 1,\r\n  \"categoryID\": 1,\r\n  \"statusStock\": \"IN_STOCK\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/product"
+							},
+							"response": []
+						},
+						{
+							"name": "Product {id}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"DEFAULT\",\r\n    \"brand\": \"DEFAULT\",\r\n    \"price\": 1,\r\n    \"categoryId\": 1,\r\n    \"statusStock\": \"IN_STOCK/OUT_OF_STOCK\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8080/product/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Product {id}",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": ""
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:8080/product/1"
+							},
+							"response": []
+						}
+					],
+					"description": "PT-BR: Somente usuarios ADMIN tem acesso a esses endpoints.\n\nEN: Only ADMIN users have access to these endpoints."
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "Product {id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/product/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Product All",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/product/all"
+							},
+							"response": []
+						},
+						{
+							"name": "Product Category {id}",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/product/category/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Product Price",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/product/price/1"
+							},
+							"response": []
+						},
+						{
+							"name": "Product Brand",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/product/brand/Test"
+							},
+							"response": []
+						},
+						{
+							"name": "Product inStock",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:8080/product/inStock"
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"description": "PT-BR: Endpoints dos Produtos.\n\nEN: Product Endpoints."
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Order {id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/order/6"
+					},
+					"response": []
+				},
+				{
+					"name": "Order All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/order/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"items\": [ \r\n            {\"productID\": 1, \"quantity\": 1 },\r\n            {\"productID\": 2, \"quantity\": 2 }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/order"
+					},
+					"response": []
+				}
+			],
+			"description": "PT-BR: Endpoints dos Pedidos.\n\nEN: Order Endpoints."
+		},
+		{
+			"name": "Purchase",
+			"item": [
+				{
+					"name": "Puchase {id}",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/purchase/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/purchase/all"
+					},
+					"response": []
+				},
+				{
+					"name": "Purchase",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": ""
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"orderID\": 1,\r\n    \"paymentMethod\": \"CREDIT_CARD/DEBIT_CARD/PIX\",\r\n    \"deliveryAddress\":\"DEFAULT\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/purchase"
+					},
+					"response": []
+				}
+			],
+			"description": "PT-BR: Endpoints de Compras.\n\nEN: Purchase Endpoints."
+		}
+	]
+}

@@ -1,10 +1,7 @@
 package com.app.labdesoftware.entities;
 
 import com.app.labdesoftware.enumerations.UserRole;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -22,6 +19,7 @@ public class User implements UserDetails {
     private Integer id;
     private String username;
     private String password;
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
     public User() {

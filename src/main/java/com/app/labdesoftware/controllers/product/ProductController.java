@@ -5,7 +5,6 @@ import com.app.labdesoftware.entities.User;
 import com.app.labdesoftware.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -16,32 +15,27 @@ public class ProductController implements com.app.labdesoftware.controllers.prod
     @Autowired
     private ProductService productService;
 
-    public ResponseEntity<Product> get(Integer id) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<Product> get(User user,Integer id) {
         Product product = productService.getProduct(user,id);
         return ResponseEntity.ok(product);
     }
 
-    public ResponseEntity<List<ProductResponse>> listAll(){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<List<ProductResponse>> listAll(User user){
         List<ProductResponse> products = productService.listAllProducts(user);
         return ResponseEntity.ok(products);
     }
 
-    public ResponseEntity<List<ProductResponse>> listByCategory(Integer categoryId) {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<List<ProductResponse>> listByCategory(User user,Integer categoryId) {
         List<ProductResponse> products = productService.listByCategory(user,categoryId);
         return ResponseEntity.ok(products);
     }
 
-    public ResponseEntity<List<ProductResponse>> listByPrice(Integer price){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<List<ProductResponse>> listByPrice(User user,Integer price){
         List<ProductResponse> products = productService.listByPrice(user,price);
         return ResponseEntity.ok(products);
     }
 
-    public ResponseEntity<List<ProductResponse>> listByBrand(String brand){
-        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<List<ProductResponse>> listByBrand(User user,String brand){
         List<ProductResponse> products = productService.listByBrand(user,brand);
         return ResponseEntity.ok(products);
     }

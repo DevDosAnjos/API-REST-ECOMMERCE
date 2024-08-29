@@ -65,7 +65,7 @@ public class OrderService {
             }
             productIds.add(itemRequest.productID());
             Product product = productRepository.findById(itemRequest.productID())
-                    .orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"PRODUCT ID NOT FOUND:" + itemRequest.productID()));
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "PRODUCT ID NOT FOUND: " + itemRequest.productID()));
             if (product.getStatusStock() == StatusStock.OUT_OF_STOCK){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"PRODUCT OUT OF STOCK: " + itemRequest.productID());
             }
@@ -76,7 +76,6 @@ public class OrderService {
             Item newItem = new Item();
             newItem.setProduct(product);
             newItem.setQuantity(itemRequest.quantity());
-            itemService.create(newItem);
             listItems.add(newItem);
         }
         Order order = new Order(user, listItems);

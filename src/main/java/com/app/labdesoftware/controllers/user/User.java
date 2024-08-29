@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public interface User {
             @ApiResponse(responseCode = "403",description = "Authenticated User not allowed")
     })
     @GetMapping("/all")
-    ResponseEntity<List<UserResponse>> listAll();
+    ResponseEntity<List<UserResponse>> listAll(@AuthenticationPrincipal com.app.labdesoftware.entities.User user);
 
     @Operation(summary = "Get a List of Users with role Admin", method = "GET")
     @ApiResponses(value = {
@@ -29,7 +30,7 @@ public interface User {
             @ApiResponse(responseCode = "403",description = "Authenticated User not allowed")
     })
     @GetMapping("/admins")
-    ResponseEntity<List<UserResponse>> listAllAdmins();
+    ResponseEntity<List<UserResponse>> listAllAdmins(@AuthenticationPrincipal com.app.labdesoftware.entities.User user);
 
     @Operation(summary = "Get a List of Users", method = "GET")
     @ApiResponses(value = {
@@ -37,16 +38,7 @@ public interface User {
             @ApiResponse(responseCode = "403",description = "Authenticated User not allowed")
     })
     @GetMapping("/users")
-    ResponseEntity<List<UserResponse>> listAllUsers();
-
-    @Operation(summary = "Register of a new Admin", method = "POST")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200",description = "Registration completed successfully"),
-            @ApiResponse(responseCode = "403",description = "Authenticated User not allowed"),
-            @ApiResponse(responseCode = "409",description = "Username already exist, enter another username")
-    })
-    @PostMapping("/admin/register")
-    ResponseEntity<RegisterResponse> registerAdmin(@RequestBody RegisterRequest registerRequest);
+    ResponseEntity<List<UserResponse>> listAllUsers(@AuthenticationPrincipal com.app.labdesoftware.entities.User user);
 
     @Operation(summary = "Updates the info of the currently authenticated User", method = "PUT")
     @ApiResponses(value = {
@@ -54,6 +46,5 @@ public interface User {
             @ApiResponse(responseCode = "404",description = "User id not found")
     })
     @PutMapping()
-    ResponseEntity<UpdateRegisterResponse> update(@RequestBody RegisterRequest registerRequest);
-
+    ResponseEntity<UpdateRegisterResponse> update(@AuthenticationPrincipal com.app.labdesoftware.entities.User user,@RequestBody RegisterRequest registerRequest);
 }

@@ -1,11 +1,13 @@
 package com.app.labdesoftware.controllers.product;
 
+import com.app.labdesoftware.entities.User;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,14 +24,14 @@ public interface Product {
             @ApiResponse(responseCode = "404",description = "Product id not found")
     })
     @GetMapping("/{id}")
-    ResponseEntity<com.app.labdesoftware.entities.Product> get(@PathVariable("id") Integer id);
+    ResponseEntity<com.app.labdesoftware.entities.Product> get(@AuthenticationPrincipal User user, @PathVariable("id") Integer id);
 
     @Operation(summary = "Get a List of All Products", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",description = "Ok"),
     })
     @GetMapping("/all")
-    ResponseEntity<List<ProductResponse>> listAll();
+    ResponseEntity<List<ProductResponse>> listAll(@AuthenticationPrincipal User user);
 
     @Operation(summary = "Get a List of Product by CategoryId", method = "GET")
     @ApiResponses(value = {
@@ -37,21 +39,21 @@ public interface Product {
             @ApiResponse(responseCode = "404",description = "Category id not found")
     })
     @GetMapping("/category/{categoryId}")
-    ResponseEntity<List<ProductResponse>> listByCategory(@PathVariable("categoryId")Integer categoryId);
+    ResponseEntity<List<ProductResponse>> listByCategory(@AuthenticationPrincipal User user,@PathVariable("categoryId")Integer categoryId);
 
     @Operation(summary = "Get a List of Products by Price", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",description = "Ok"),
     })
     @GetMapping("/price/{price}")
-    ResponseEntity<List<ProductResponse>> listByPrice(@PathVariable("price")Integer price);
+    ResponseEntity<List<ProductResponse>> listByPrice(@AuthenticationPrincipal User user,@PathVariable("price")Integer price);
 
     @Operation(summary = "Get a List of Products by Brand", method = "GET")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200",description = "Ok"),
     })
     @GetMapping("/brand/{brand}")
-    ResponseEntity<List<ProductResponse>> listByBrand(@PathVariable("brand")String brand);
+    ResponseEntity<List<ProductResponse>> listByBrand(@AuthenticationPrincipal User user,@PathVariable("brand")String brand);
 
     @Operation(summary = "Get a List of Products In Stock", method = "GET")
     @ApiResponses(value = {

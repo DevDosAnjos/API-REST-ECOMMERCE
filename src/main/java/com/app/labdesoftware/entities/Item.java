@@ -1,5 +1,6 @@
 package com.app.labdesoftware.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -11,8 +12,13 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
+    @JoinColumn(name = "product_id")
     private Product product;
     private Integer quantity;
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @JsonBackReference
+    private Order order;
 
     public Item() {
     }

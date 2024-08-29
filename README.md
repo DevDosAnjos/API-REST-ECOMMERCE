@@ -3,36 +3,36 @@
 
 ## 🛒Projeto
 
-Este projeto implementa uma API REST para um sistema de e-commerce, com funcionalidades que incluem gerenciamento de usuários, produtos, categorias de produtos, pedidos e processos de compra.
+Este projeto implementa uma API REST para um sistema de e-commerce, com funcionalidades que incluem gerenciamento de usuários, categorias de produtos, produtos, pedidos e processos de compra.
 
 <details>
 <summary><b>Authentication</b></summary>
-<img src="images" alt="Authentication">
+<img src="files/Images/Authentication.png" alt="Authentication">
 </details>
 
 <details>
 <summary><b>User</b></summary>
-<img src="images" alt="User">
+<img src="files/Images/User.png" alt="User">
 </details>
 
 <details>
 <summary><b>Category</b></summary>
-<img src="images" alt="Category">
+<img src="files/Images/Category.png" alt="Category">
 </details>
 
 <details>
 <summary><b>Product</b></summary>
-<img src="images" alt="Product">
+<img src="files/Images/Product.png" alt="Product">
 </details>
 
 <details>
 <summary><b>Order</b></summary>
-<img src="images" alt="Order">
+<img src="files/Images/Order.png" alt="Order">
 </details>
 
 <details>
 <summary><b>Purchase</b></summary>
-<img src="images" alt="Purchase">
+<img src="files/Images/Purchase.png" alt="Purchase">
 </details>
 
 
@@ -49,15 +49,17 @@ Este projeto implementa uma API REST para um sistema de e-commerce, com funciona
 - **Containerização**: Docker
 - **Deploy**:
 
-## ☁ Deploy
+## ☁ Utilização
 
-A API está hospedada em:
+A API pode ser utilizada/testada pelas formas abaixo:
 
-Podendo ser testada pelas formas abaixo:
+**Remotamente:**
+- **Acessando a API no local de hospedagem**:
 
-- **Acessando a Documentação da API no local de hospedagem**:
+**Localmente:**
 - **Acessando a Documentação da API localmente**: http://localhost:8080/swagger-ui/index.html#/
-- **Importando a Collection JSON (Postman ou Insomnia)**: [Collection] 
+- **Importando a Collection JSON (Postman ou Insomnia)**: [Collection] (files/Collection/Ecommerce_collection.json)
+
 
 ## 👨‍💻Autor
 Nathan dos Anjos Gonçalves

@@ -2,10 +2,7 @@ package com.app.labdesoftware.entities;
 
 import com.app.labdesoftware.controllers.category.CategoryRequest;
 import com.app.labdesoftware.enumerations.StatusCategory;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity(name = "categories")
@@ -16,6 +13,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
+    @Enumerated(EnumType.STRING)
     private StatusCategory status;
 
     public Category() {

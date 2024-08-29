@@ -1,5 +1,6 @@
 package com.app.labdesoftware.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,7 +16,8 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL,orphanRemoval = true)
+    @JsonManagedReference
     private List<Item> items;
 
     public Order() {
@@ -24,5 +26,8 @@ public class Order {
     public Order(User user, List<Item> items) {
         this.user = user;
         this.items = items;
+        for (Item item : items) {
+            item.setOrder(this);
+        }
     }
 }

@@ -30,7 +30,7 @@ public class PurchaseService {
         if (user.getRole().equals(UserRole.ADMIN)){
             purchase = purchaseRepository.findById(id);
         } else {
-            purchase = purchaseRepository.findByUser(user);
+            purchase = purchaseRepository.findByIdAndUser(id,user);
         }
         if (purchase.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "PURCHASE IS NOT FOUND");
@@ -71,7 +71,7 @@ public class PurchaseService {
         }
         Order newOrder = optOrder.get();
         if (!newOrder.getUser().equals(user)){
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN,"USER NOT ALLOWED");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN,"USER NOT ALLOWED, THE ORDER WAS NOT MADE BY THE AUTHENTICATED USER");
         }
         Purchase purchase = new Purchase(user, newOrder,purchaseRequest.deliveryAddress(),purchaseRequest.paymentMethod());
         purchase.setTotal(purchase.calculateTotal());

@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @OpenAPIDefinition(
         info = @io.swagger.v3.oas.annotations.info.Info(
                 contact = @Contact(
-                        name = "DevDosAnjos",email = "nathang2804@gmail.com",url = "https://www.linkedin.com/in/nathan-dos-anjos-gon%C3%A7alves-58849424a/"),
+                        name = "DevDosAnjos",email = "devdosanjos28@gmail.com",url = "https://www.linkedin.com/in/nathan-dos-anjos-gon%C3%A7alves-58849424a/"),
                 description = "E-Commerce API Documentation",
                 title = "E-Commerce API - DevDosAnjos",version = "1.0"),
         servers = {

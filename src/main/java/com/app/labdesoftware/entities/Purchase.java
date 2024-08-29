@@ -21,6 +21,7 @@ public class Purchase {
     private LocalDateTime createdAt;
     private Integer total;
     private String deliveryAddress;
+    @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
     public Purchase() {

@@ -1,13 +1,15 @@
 package com.app.labdesoftware.controllers.order;
 
-import jakarta.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
 public record OrderRequest(
         @NotNull(message = "Items cannot be null")
-        @NotBlank(message = "Items cannot be blank")
+        @Size(min = 1, message = "Items cannot be empty")
+        @JsonProperty("items")
         List<ItemRequest> items
 ) {
 }

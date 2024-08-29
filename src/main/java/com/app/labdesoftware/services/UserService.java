@@ -11,7 +11,6 @@ import com.app.labdesoftware.enumerations.UserRole;
 import com.app.labdesoftware.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -30,6 +29,7 @@ public class UserService {
     @Autowired
     private TokenService tokenService;
 
+
     public List<UserResponse> listAll(User user) {
         if (user.getRole().equals(UserRole.USER)){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN,"AUTHENTICATED USER NOT ALLOWED");
@@ -46,6 +46,7 @@ public class UserService {
         return UserResponse.fromUser(users);
     }
 
+
     public List<UserResponse> listAllUsers(User user) {
         if (user.getRole().equals(UserRole.USER)){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN,"AUTHENTICATED USER NOT ALLOWED");
@@ -54,24 +55,24 @@ public class UserService {
         return UserResponse.fromUser(users);
     }
 
-    public ResponseEntity<LoginResponse> login(LoginRequest loginRequest) {
+    public LoginResponse login(LoginRequest loginRequest) {
         var usernamePassword = new UsernamePasswordAuthenticationToken(loginRequest.username(),loginRequest.password());
         var auth = authenticationManager.authenticate(usernamePassword);
         var token = tokenService.generateToken((User) auth.getPrincipal());
-        return ResponseEntity.ok(new LoginResponse(token));
+        return new LoginResponse(token);
     }
 
-    public ResponseEntity<RegisterResponse> register(RegisterRequest registerRequest) {
+    public RegisterResponse register(RegisterRequest registerRequest) {
         if(userRepository.findByUsername(registerRequest.username()) != null){
             throw new ResponseStatusException(HttpStatus.CONFLICT,"USERNAME ALREADY EXISTS, ENTER ANOTHER USERNAME");
         }
         String encryptedPassword = new BCryptPasswordEncoder().encode(registerRequest.password());
         User User = new User(registerRequest.username(), encryptedPassword, UserRole.USER);
         userRepository.save(User);
-        return ResponseEntity.ok(new RegisterResponse(User.getUsername()));
+        return new RegisterResponse(User.getUsername());
     }
 
-    public ResponseEntity<RegisterResponse> registerAdmin(User user,RegisterRequest registerRequest){
+    public RegisterResponse registerAdmin(User user,RegisterRequest registerRequest){
         if (user.getRole().equals(UserRole.USER)){
             throw new ResponseStatusException(HttpStatus.FORBIDDEN,"AUTHENTICATED USER NOT ALLOWED");
         }
@@ -80,10 +81,10 @@ public class UserService {
         String encryptedPassword = new BCryptPasswordEncoder().encode(registerRequest.password());
         User newUser = new User(registerRequest.username(), encryptedPassword, UserRole.ADMIN);
         userRepository.save(newUser);
-        return ResponseEntity.ok(new RegisterResponse(newUser.getUsername()));
+        return new RegisterResponse(newUser.getUsername());
     }
 
-    public ResponseEntity<UpdateRegisterResponse> updateUser(Integer authenticatedUserId, RegisterRequest registerRequest) {
+    public UpdateRegisterResponse update(Integer authenticatedUserId, RegisterRequest registerRequest) {
         User user = userRepository.findById(authenticatedUserId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "USER NOT FOUND"));
         if (registerRequest.password() != null ) {
@@ -94,6 +95,6 @@ public class UserService {
             user.setUsername(registerRequest.username());
         }
         userRepository.save(user);
-        return ResponseEntity.ok(new UpdateRegisterResponse(user.getUsername()));
+        return new UpdateRegisterResponse(user.getUsername());
     }
 }
