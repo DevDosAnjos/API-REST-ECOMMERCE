@@ -49,7 +49,7 @@ Este projeto implementa uma API REST para um sistema de e-commerce, com funciona
 - **Containerização**: Docker
 - **Deploy**:
 
-## ☁ Utilização
+## 💻 Utilização
 
 A API pode ser utilizada/testada pelas formas abaixo:
 
@@ -58,7 +58,8 @@ A API pode ser utilizada/testada pelas formas abaixo:
 
 **Localmente:**
 - **Acessando a Documentação da API localmente**: http://localhost:8080/swagger-ui/index.html#/
-- **Importando a Collection JSON (Postman ou Insomnia)**: https://github.com/DevDosAnjos/API-REST-ECOMMERCE/blob/main/files/Collection/Ecommerce_collection.json
+- **Importando o Arquivo JSON da Collection (Postman ou Insomnia)**: https://github.com/DevDosAnjos/API-REST-ECOMMERCE/blob/main/files/Collection/Ecommerce_collection.json
+- 
 
 
 ## 👨‍💻Autor
