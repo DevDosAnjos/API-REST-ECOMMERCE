@@ -58,7 +58,7 @@ A API pode ser utilizada/testada pelas formas abaixo:
 
 **Localmente:**
 - **Acessando a Documentação da API localmente**: http://localhost:8080/swagger-ui/index.html#/
-- **Importando a Collection JSON (Postman ou Insomnia)**: [Collection] (files/Collection/Ecommerce_collection.json)
+- **Importando a Collection JSON (Postman ou Insomnia)**: https://github.com/DevDosAnjos/API-REST-ECOMMERCE/blob/main/files/Collection/Ecommerce_collection.json
 
 
 ## 👨‍💻Autor
