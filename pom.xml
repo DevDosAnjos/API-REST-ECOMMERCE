@@ -10,9 +10,9 @@
     </parent>
     <groupId>com.app</groupId>
     <artifactId>E-Commerce</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>LabDeSofwtare</name>
-    <description>LabDeSofwtare</description>
+    <version>0.0.1</version>
+    <name>ECommerce</name>
+    <description>ECommerce</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -98,9 +98,10 @@
             <version>2.3.0</version>
         </dependency>
         <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>jacoco-maven-plugin</artifactId>
-            <version>0.8.12</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-docker-compose</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -123,9 +124,23 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
-        </plugins>
 
+        </plugins>
     </build>
 
 
