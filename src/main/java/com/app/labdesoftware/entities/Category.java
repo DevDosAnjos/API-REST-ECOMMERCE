@@ -14,14 +14,14 @@ public class Category {
     private Integer id;
     private String name;
     @Enumerated(EnumType.STRING)
-    private StatusCategory status;
+    private StatusCategory statusCategory;
 
     public Category() {
     }
 
     public Category(String name) {
         this.name = name;
-        this.status = StatusCategory.ACTIVE;
+        this.statusCategory = StatusCategory.ACTIVE;
     }
 
     public static Category from(CategoryRequest categoryRequest) {

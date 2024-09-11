@@ -1,5 +1,5 @@
 CREATE TABLE categories (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    status ENUM('INACTIVE', 'ACTIVE') NOT NULL
+    status_category ENUM('INACTIVE', 'ACTIVE') NOT NULL
 );

@@ -285,7 +285,7 @@ class ProductServiceTest {
     @DisplayName("Verify if the existing category is inactive, if it is, it throws an exception")
     void createProductException2() {
         Category category = new Category("Test");
-        category.setStatus(StatusCategory.INACTIVE);
+        category.setStatusCategory(StatusCategory.INACTIVE);
         ProductRequest productRequest = new ProductRequest("Product Create Test", "Test Create",10,category.getId(),StatusStock.IN_STOCK);
 
         Assertions.assertThrows(ResponseStatusException.class,()-> productService.createProduct(productRequest));
@@ -335,7 +335,7 @@ class ProductServiceTest {
     void updateProductException3() {
         Category category = new Category("Test");
         category.setId(1);
-        category.setStatus(StatusCategory.INACTIVE);
+        category.setStatusCategory(StatusCategory.INACTIVE);
         Product product = new Product("Product Test", "Test", 10, category);
         ProductRequest productRequest = new ProductRequest("Product Update Test", "Test Update",20,category.getId(),StatusStock.IN_STOCK);
 

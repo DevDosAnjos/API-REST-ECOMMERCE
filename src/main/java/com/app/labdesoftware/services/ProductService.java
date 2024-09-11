@@ -96,7 +96,7 @@ public class ProductService {
         if (category.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CATEGORY ID NOT FOUND");
         }
-        if (category.get().getStatus().equals(StatusCategory.INACTIVE)){
+        if (category.get().getStatusCategory().equals(StatusCategory.INACTIVE)){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"CATEGORY IS INACTIVE");
         }
        Product product = Product.from(productRequest,category.get());
@@ -123,7 +123,7 @@ public class ProductService {
             if (category.isEmpty()){
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CATEGORY ID NOT FOUND");
             }
-            if (category.get().getStatus().equals(StatusCategory.INACTIVE)){
+            if (category.get().getStatusCategory().equals(StatusCategory.INACTIVE)){
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"CATEGORY IS INACTIVE");
             }
             product.get().setCategory(category.get());

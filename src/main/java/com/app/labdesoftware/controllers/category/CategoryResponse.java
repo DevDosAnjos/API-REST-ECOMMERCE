@@ -14,7 +14,7 @@ public record CategoryResponse(
         return categories.stream().map(category -> new CategoryResponse(
                 category.getId(),
                 category.getName(),
-                category.getStatus()
+                category.getStatusCategory()
         )).toList();
     }
 }

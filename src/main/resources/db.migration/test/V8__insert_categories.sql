@@ -1,4 +1,4 @@
-INSERT INTO categories (name, status) VALUES ('Electronics', 'ACTIVE');
-INSERT INTO categories (name, status) VALUES ('Books', 'ACTIVE');
-INSERT INTO categories (name, status) VALUES ('Sports', 'INACTIVE');
-INSERT INTO categories (name, status) VALUES ('Toys', 'INACTIVE');
+INSERT INTO categories (name, status_category) VALUES ('Electronics', 'ACTIVE');
+INSERT INTO categories (name, status_category) VALUES ('Books', 'ACTIVE');
+INSERT INTO categories (name, status_category) VALUES ('Sports', 'INACTIVE');
+INSERT INTO categories (name, status_category) VALUES ('Toys', 'INACTIVE');

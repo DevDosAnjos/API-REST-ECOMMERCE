@@ -26,20 +26,20 @@ public class CategoryService {
         if (category.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CATEGORY NOT FOUND, ID IS INCORRECT");
         }
-        if (user.getRole().equals(UserRole.USER) && category.get().getStatus() == StatusCategory.INACTIVE) {
+        if (user.getRole().equals(UserRole.USER) && category.get().getStatusCategory() == StatusCategory.INACTIVE) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "CATEGORY INACTIVE, ENTER ANOTHER ID ");
         }
         return new CategoryResponse(
                 category.get().getId(),
                 category.get().getName(),
-                category.get().getStatus()
+                category.get().getStatusCategory()
         );
     }
 
     public List<CategoryResponse> listAllCategories(User user) {
         List<Category> categories;
         if (user.getRole().equals(UserRole.USER)) {
-            categories = categoryRepository.findAllByStatus(StatusCategory.ACTIVE);
+            categories = categoryRepository.findAllByStatusCategory(StatusCategory.ACTIVE);
         } else {
             categories = categoryRepository.findAll();
         }
@@ -47,12 +47,12 @@ public class CategoryService {
     }
 
     public List<CategoryResponse> listActiveCategories() {
-        List<Category> categories = categoryRepository.findAllByStatus(StatusCategory.ACTIVE);
+        List<Category> categories = categoryRepository.findAllByStatusCategory(StatusCategory.ACTIVE);
         return CategoryResponse.fromCategory(categories);
     }
 
     public List<CategoryResponse> listInactiveCategories() {
-        List<Category> categories = categoryRepository.findAllByStatus(StatusCategory.INACTIVE);
+        List<Category> categories = categoryRepository.findAllByStatusCategory(StatusCategory.INACTIVE);
         return CategoryResponse.fromCategory(categories);
     }
 
@@ -70,7 +70,7 @@ public class CategoryService {
             category.get().setName(categoryRequest.name());
         }
         if (categoryRequest.statusCategory() != null){
-            category.get().setStatus(categoryRequest.statusCategory());
+            category.get().setStatusCategory(categoryRequest.statusCategory());
         }
         return categoryRepository.saveAndFlush(category.get());
     }
@@ -80,7 +80,7 @@ public class CategoryService {
         if(category.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"CATEGORY NOT FOUND, ID IS INCORRECT");
         }
-        category.get().setStatus(StatusCategory.INACTIVE);
+        category.get().setStatusCategory(StatusCategory.INACTIVE);
         return categoryRepository.saveAndFlush(category.get());
     }
 }

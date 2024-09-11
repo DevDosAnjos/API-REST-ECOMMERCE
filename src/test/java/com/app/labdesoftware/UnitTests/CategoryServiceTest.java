@@ -42,7 +42,7 @@ class CategoryServiceTest {
 
         Assertions.assertEquals(category.getId(),response.id());
         Assertions.assertEquals(category.getName(),response.name());
-        Assertions.assertEquals(category.getStatus(),response.status());
+        Assertions.assertEquals(category.getStatusCategory(),response.status());
 
     }
 
@@ -58,7 +58,7 @@ class CategoryServiceTest {
     void getCategoryException2() {
         User user = new User("User","User", UserRole.USER);
         Category category = new Category("Category 1");
-        category.setStatus(StatusCategory.INACTIVE);
+        category.setStatusCategory(StatusCategory.INACTIVE);
 
         Assertions.assertThrows(ResponseStatusException.class,() -> categoryService.getCategory(user,category.getId()));
     }
@@ -85,10 +85,10 @@ class CategoryServiceTest {
         Category category2 = new Category("Category 2");
         Category category3 = new Category("Category 3");
         Category category4 = new Category("Category 4");
-        category3.setStatus(StatusCategory.INACTIVE);
-        category4.setStatus(StatusCategory.INACTIVE);
+        category3.setStatusCategory(StatusCategory.INACTIVE);
+        category4.setStatusCategory(StatusCategory.INACTIVE);
 
-        when(categoryRepository.findAllByStatus(StatusCategory.ACTIVE)).thenReturn(List.of(category,category2));
+        when(categoryRepository.findAllByStatusCategory(StatusCategory.ACTIVE)).thenReturn(List.of(category,category2));
         List<CategoryResponse> responses = categoryService.listActiveCategories();
 
         Assertions.assertEquals(2,responses.size());
@@ -101,10 +101,10 @@ class CategoryServiceTest {
         Category category2 = new Category("Category 2");
         Category category3 = new Category("Category 3");
         Category category4 = new Category("Category 4");
-        category3.setStatus(StatusCategory.INACTIVE);
-        category4.setStatus(StatusCategory.INACTIVE);
+        category3.setStatusCategory(StatusCategory.INACTIVE);
+        category4.setStatusCategory(StatusCategory.INACTIVE);
 
-        when(categoryRepository.findAllByStatus(StatusCategory.INACTIVE)).thenReturn(List.of(category3,category4));
+        when(categoryRepository.findAllByStatusCategory(StatusCategory.INACTIVE)).thenReturn(List.of(category3,category4));
         List<CategoryResponse> responses = categoryService.listInactiveCategories();
 
         Assertions.assertEquals(2,responses.size());
@@ -152,7 +152,7 @@ class CategoryServiceTest {
         when(categoryRepository.saveAndFlush(any())).thenReturn(category);
         Category response = categoryService.deleteCategory(category.getId());
 
-        Assertions.assertEquals(StatusCategory.INACTIVE,response.getStatus());
+        Assertions.assertEquals(StatusCategory.INACTIVE,response.getStatusCategory());
     }
 
     @Test

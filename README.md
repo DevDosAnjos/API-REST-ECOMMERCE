@@ -1,4 +1,4 @@
-<h1 align="center"> 🏪E-COMMERCE API🏪 </h1>
+<h1 align="center"> 🏪E-COMMERCE🏪 </h1>
 
 
 ## 🛒Projeto
@@ -46,21 +46,20 @@ Este projeto implementa uma API REST para um sistema de e-commerce, com funciona
 - **Migrações de Banco de Dados**: Flyway
 - **Testes**: JUnit 5, Mockito e Testcontainers
 - **Documentação**: Swagger
-- **Containerização**: Docker
-- **Deploy**:
 
 ## 💻 Utilização
 
-A API pode ser utilizada/testada pelas formas abaixo:
+Pré-requisito: Java 17
+1. Clone o repositório
+2. Crie um banco de dados MySQL com as configurações do application.properties
+3. Você pode trocar os valores do application.properties para a de sua melhor escolha
+4. De Run no com/app/labdesoftware/ECommerceApplication.java
 
-**Remotamente:**
-- **Acessando a API no local de hospedagem**:
-
-**Localmente:**
+A API pode ser utilizada pelas formas abaixo:
 - **Acessando a Documentação da API localmente**: http://localhost:8080/swagger-ui/index.html#/
 - **Importando o Arquivo JSON da Collection (Postman ou Insomnia)**: https://github.com/DevDosAnjos/API-REST-ECOMMERCE/blob/main/files/Collection/Ecommerce_collection.json
-- 
 
+OBS: Para fazer os testes de integração da aplicação, é necessario ter o Docker rodando localmente.
 
 ## 👨‍💻Autor
 Nathan dos Anjos Gonçalves
