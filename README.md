@@ -49,7 +49,7 @@ Este projeto implementa uma API REST para um sistema de e-commerce, com funciona
 
 ## 💻 Utilização
 
-Pré-requisito: Java 17
+Pré-requisito: Java 17, MySql.
 1. Clone o repositório
 2. Crie um banco de dados MySQL com as configurações do application.properties
 3. Você pode trocar os valores do application.properties para a de sua melhor escolha

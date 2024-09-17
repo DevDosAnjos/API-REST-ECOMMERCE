@@ -5,6 +5,7 @@ import com.app.labdesoftware.controllers.user.RegisterResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -36,6 +37,7 @@ public interface Authentication {
             @ApiResponse(responseCode = "403",description = "Authenticated User not allowed"),
             @ApiResponse(responseCode = "409",description = "Username already exist, enter another username")
     })
+    @SecurityRequirement(name = "Bearer Token")
     @PostMapping("/admin/register")
     ResponseEntity<RegisterResponse> registerAdmin(@AuthenticationPrincipal com.app.labdesoftware.entities.User user, @RequestBody RegisterRequest registerRequest);
 }

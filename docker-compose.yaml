@@ -1,0 +1,23 @@
+services:
+  db:
+    image: mysql:lts
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - '3308:3306'
+    volumes:
+      - /compose/database:/var/lib/mysql
+  ecommerce:
+    build:
+      dockerfile: Dockerfile
+    container_name: app
+    environment:
+      DB_URL: ${DB_URL}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db

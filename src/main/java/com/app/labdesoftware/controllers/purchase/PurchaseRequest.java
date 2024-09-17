@@ -19,7 +19,4 @@ public record PurchaseRequest(
         @JsonProperty("deliveryAddress")
         String deliveryAddress
 ) {
-    public Integer getCartId(){
-        return orderID;
-    }
 }
