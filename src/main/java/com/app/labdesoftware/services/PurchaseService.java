@@ -64,7 +64,6 @@ public class PurchaseService {
                 .collect(Collectors.toList());
     }
 
-    //TODO: impedir que uma compra seja feita com um mesmo pedido já utilizado antes.
     public PurchaseResponse createPurchase(User user,PurchaseRequest purchaseRequest) {
         Optional<Order> optOrder = orderRepository.findById(purchaseRequest.orderID());
         if (optOrder.isEmpty()) {
