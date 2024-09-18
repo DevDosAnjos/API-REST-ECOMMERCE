@@ -39,21 +39,22 @@ Este projeto implementa uma API REST para um sistema de e-commerce, com funciona
 ## 🔧Tecnologias
 
 - **Linguagem**: Java
-- **Framework**: Spring Boot (Web, Jpa, Security, Validation, DevTools e Testcontainers)
 - **Gerenciamento de Dependências**: Maven
+- **Framework**: Spring Boot (Web, Jpa, Security, Validation, DevTools e Testcontainers)
 - **Segurança**: Token JWT (auth0)
 - **Banco de Dados**: MySQL
 - **Migrações de Banco de Dados**: Flyway
 - **Testes**: JUnit 5, Mockito e Testcontainers
 - **Documentação**: Swagger
+- **Docker**: Imagem e Containers
 
 ## 💻 Utilização
 
-Pré-requisito: Java 17, MySql.
-1. Clone o repositório
-2. Crie um banco de dados MySQL com as configurações do application.properties
-3. Você pode trocar os valores do application.properties para a de sua melhor escolha
-4. De Run no com/app/labdesoftware/ECommerceApplication.java
+Pré-requisito: Java 17 e Docker.
+
+1. Clone o projeto 
+2. Altere os dados do arquivo .env-example para o de sua melhor escolha 
+3. No terminal, utilize o seguinte comando: docker compose up --build
 
 A API pode ser utilizada pelas formas abaixo:
 - **Acessando a Documentação da API localmente**: http://localhost:8080/swagger-ui/index.html#/
