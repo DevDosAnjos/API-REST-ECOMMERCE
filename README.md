@@ -57,7 +57,7 @@ O Fluxo de Operações seria:
 
 ## 💻 Utilização
 
-Pré-requisitos: Java 17 ou Docker
+! Pré-requisitos: Java 17 e Docker !
 
 Para utilizar a aplicação:
 
@@ -65,6 +65,12 @@ Para utilizar a aplicação:
 2. Clone o Projeto 
 3. Abra o Projeto na sua IDE
 4. No terminal dentro da IDE, utilize o seguinte comando: docker compose up 
+
+
+
+A API pode ser utilizada pelas formas abaixo:
+- **Acessando a Documentação da API localmente**: http://localhost:8080/swagger-ui/index.html#/
+- **Importando o Arquivo JSON da Collection (Postman ou Insomnia)**: https://github.com/DevDosAnjos/API-REST-ECOMMERCE/blob/main/files/Collection/Ecommerce_collection.json
 
 Inserts Padrões:
 
@@ -83,12 +89,6 @@ Inserts Padrões:
 <img src="files/Images/InsertsProduct1.png" alt="Product">
 <img src="files/Images/InsertsProduct2.png" alt="Product">
 </details>
-
-A API pode ser utilizada pelas formas abaixo:
-- **Acessando a Documentação da API localmente**: http://localhost:8080/swagger-ui/index.html#/
-- **Importando o Arquivo JSON da Collection (Postman ou Insomnia)**: https://github.com/DevDosAnjos/API-REST-ECOMMERCE/blob/main/files/Collection/Ecommerce_collection.json
-
-
 
 ## 👨‍💻Autor
 Nathan dos Anjos Gonçalves
