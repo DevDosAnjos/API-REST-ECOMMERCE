@@ -5,6 +5,13 @@
 
 Este projeto implementa uma API REST para um sistema de e-commerce, com funcionalidades que incluem gerenciamento de usuários, categorias de produtos, produtos, pedidos e processos de compra.
 
+O Fluxo de Operações seria:
+
+1. Authenticação dos Usuários e Admins.
+2. Users podendo realizar algumas funcionalidades, com o intuito final de realizar uma compra.
+3. Admins tendo controle total da API.
+
+
 <details>
 <summary><b>Authentication</b></summary>
 <img src="files/Images/Authentication.png" alt="Authentication">
